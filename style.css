@@ -52,6 +52,11 @@ main,
 
 section {
     padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--bg-primary-color);
+    gap: var(--space-lg);
 }
 
 section .infos{
@@ -63,5 +68,20 @@ section .infos{
 .info{
     padding: var(--space-sm) var(--space-md);
     border: 1px solid var(--border-primary-color);
-    border-radius: var(--border-radius-xs);
+    border-radius: var(--border-radius-sm);
+}
+
+.board{
+    border: 1px solid var(--border-primary-color);
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 30px);
+    grid-template-rows: repeat(auto-fill, 30px);
+}
+
+.block{
+   width: 30px;
+   height: 30px;
+   border: 1px solid var(--border-primary-color);
+   
 }
