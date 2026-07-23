@@ -71,7 +71,7 @@ section .infos{
     border-radius: var(--border-radius-sm);
 }
 
-.board{
+#board{
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;
     display: grid;
