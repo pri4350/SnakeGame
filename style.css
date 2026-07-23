@@ -13,9 +13,10 @@ html,
 :root{
     /*Bachground Color*/
     --bg-primary-color: #0c0c0c;
+    --bg-fill-color: #222222;
 
     /*Text color*/
-    --text-primary-color: #f0f0f0;
+    --text-primary-color: #fdfdfd;
 
     /*Spacing variable*/
     --space-xs: 4px;
@@ -55,7 +56,6 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: var(--bg-primary-color);
     gap: var(--space-lg);
 }
 
@@ -75,10 +75,14 @@ section .infos{
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
 }
 
-.block{
+.block {
     border: 1px solid var(--border-primary-color);
+}
+
+.fill{
+    background-color: var(--bg-fill-color);
 }
