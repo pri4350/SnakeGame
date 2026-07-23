@@ -14,9 +14,13 @@ html,
     /*Bachground Color*/
     --bg-primary-color: #0c0c0c;
     --bg-fill-color: #222222;
+    --snake-head-color: #4CAF50;
+    --snake-body-color: #388E3C;
+    --food-color: #FF5722;
 
     /*Text color*/
     --text-primary-color: #fdfdfd;
+    --text-secondary-color: #aaaaaa;
 
     /*Spacing variable*/
     --space-xs: 4px;
@@ -63,26 +67,121 @@ section .infos{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
 }
 
 .info{
     padding: var(--space-sm) var(--space-md);
     border: 1px solid var(--border-primary-color);
     border-radius: var(--border-radius-sm);
+    white-space: nowrap;
 }
 
 #board{
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 0;
 }
 
 .block {
-    border: 1px solid var(--border-primary-color);
+    border: 1px solid #1a1a1a;
+    transition: background-color 0.05s ease;
 }
 
-.fill{
-    background-color: var(--bg-fill-color);
+.snake-body {
+    background-color: var(--snake-body-color);
+    border-radius: 4px;
 }
+
+.snake-head {
+    background-color: var(--snake-head-color);
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+.food {
+    background-color: var(--food-color);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255, 87, 34, 0.6);
+    animation: pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Game Over Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    background-color: var(--bg-fill-color);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-3xl);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.overlay-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    color: #FF5252;
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-secondary-color);
+}
+
+.overlay-content p span {
+    color: var(--text-primary-color);
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+#restart-btn {
+    margin-top: var(--space-xl);
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 1.1rem;
+    background-color: var(--snake-head-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#restart-btn:hover {
+    background-color: #66BB6A;
+    transform: scale(1.05);
+}
+
+#restart-btn:active {
+    transform: scale(0.95);
+}
+
